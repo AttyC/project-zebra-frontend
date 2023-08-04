@@ -1,12 +1,13 @@
 const GenreSelect = () => {
     const testfn = () => 'no semicolon at end '
     const longString =
-        'this string is over 85 characters long askfdjhaksl dfhasdhjflkv ajsbdlkajbdgkls bjkajsdklfhalksdjfhaklsjdhfa lksjdfklahsdfk jashdlkajhdkahjdflj';
+        'this string is over 85 characters long askfdjhaksl dfhasdhjflkv ajsbdlkajbdgkls bjkajsdklfhalksdjfhaklsjdhfa lksjdfklahsdfk jashdlkajhdkahjdflj'
 
     const trailingCommas = {
         test: 1,
-        missingComma: 2
+        missingComma: 2,
     }
+    const test = 'test component'
 
     return (
         <div>
@@ -14,7 +15,7 @@ const GenreSelect = () => {
             {testfn()}
             {longString}
         </div>
-    );
-};
+    )
+}
 
-export default GenreSelect;
+export default GenreSelect
