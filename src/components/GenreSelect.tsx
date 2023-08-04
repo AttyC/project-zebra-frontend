@@ -1,18 +1,20 @@
-import React from 'react'
+const GenreSelect = () => {
+    const testfn = () => 'no semicolon at end '
+    const longString =
+        'this string is over 85 characters long askfdjhaksl dfhasdhjflkv ajsbdlkajbdgkls bjkajsdklfhalksdjfhaklsjdhfa lksjdfklahsdfk jashdlkajhdkahjdflj';
 
-type Props = {}
+    const trailingCommas = {
+        test: 1,
+        missingComma: 2
+    }
 
-const GenreSelect = (props: Props) => {
-  const testfn = () => 'no semicolon at end '
-  const longString = 'this string is over 85 characters long askfdjhaksldfhasdhjflkajsbdlkajbdgklsbjkajsdklfhalksdjfhaklsjdhfalksjdfklahsdfkjashdlkajhdkahjdflj'
-  return (
-    <div>
-      bad intendation
-      {testfn()}
-      {longString}
+    return (
+        <div>
+            bad intendation
+            {testfn()}
+            {longString}
+        </div>
+    );
+};
 
-    </div>
-  )
-}
-
-export default GenreSelect
+export default GenreSelect;
