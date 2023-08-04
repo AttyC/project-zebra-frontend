@@ -23,10 +23,7 @@
         "noFallthroughCasesInSwitch": true
     },
     "include": [
-        "src",
-        ".eslint.cjs",
-        "postcss.config.js",
-        "tailwind.config.js"
+        "src"
     ],
     "references": [
         {
