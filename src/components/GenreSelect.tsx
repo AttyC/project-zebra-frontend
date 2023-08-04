@@ -2,16 +2,16 @@ import React from 'react'
 
 type Props = {}
 
+// this file currently uses 2 spaces for indentation!
 const GenreSelect = (props: Props) => {
-  const testfn = () => 'no semicolon at end '
-  const longString =
-    'this string is over 85 characters long askfdjhaksl dfhasdhjflkv ajsbdlkajbdgkls bjkajsdklfhalksdjfhaklsjdhfa lksjdfklahsdfk jashdlkajhdkahjdflj'
+  const testfn = () => "double quoted string without semicolon at end"
+  const longFunction = () => { const test = '1234'; const why = 'hello hello hello '; const hello = "how are you doing?" }
 
   const trailingCommas = {
-    test: 1,
-    missingComma: 2,
+    commaAfterThisKey: 1,
+    missingCommaAfterThisKey: 2
   }
-  const test = 'test component';
+  const crampedObject = {hi: 1, goodbye: 2}
 
   return (
     <div>GenreSelect
