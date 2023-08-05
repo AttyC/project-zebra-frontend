@@ -95,7 +95,7 @@ const Filter = () => {
     setGenreUIList(encodeURI(genreNames.join(',')));
     setError('');
     const filterURL =
-      `http://localhost:3000/movie_genre?` + '&with_genres=' + filterQuery;
+      `http://localhost:3000/filter?` + '&with_genres=' + filterQuery;
     try {
       const response = await fetch(filterURL);
       const data = await response.json();
