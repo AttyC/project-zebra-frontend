@@ -1,9 +1,4 @@
-interface IMovie {
-  id: number;
-  title: string;
-  overview: string;
-  poster_path: string;
-}
+import { IMovie } from '../types/IMovie';
 
 interface IMovieProps {
   movie: IMovie;
