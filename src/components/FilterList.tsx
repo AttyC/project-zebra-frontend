@@ -1,12 +1,9 @@
 import React from 'react';
-import { useState } from 'react';
+import { IGenre } from '../types/interfaces';
+interface IFilterListProps {
+  createGenreList: (genre: IGenre) => void;
+}
 
-// interface IMovieProps {
-//   movie: IMovie;
-// }
-
-// type Props = {}
-// props: Props
 const genres = [
   {
     id: 28,
@@ -86,17 +83,19 @@ const genres = [
   },
 ];
 
-const Filters = ({ handleGenres }) => {
+const FilterList: React.FC<IFilterListProps> = ({ createGenreList }) => {
   return (
     <div>
       <h2>Filtered Results</h2>
       <ul className='filter-list'>
         {genres?.map((genre) => (
-          <li onClick={() => handleGenres(genre)}>{genre.name}</li>
+          <li key={genre.id} onClick={() => createGenreList(genre)}>
+            {genre.name}
+          </li>
         ))}
       </ul>
     </div>
   );
 };
 
-export default Filters;
+export default FilterList;

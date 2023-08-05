@@ -1,29 +1,27 @@
 import { useState } from 'react';
 import Movie from './Movie';
-import { IGenre } from '../types/interfaces';
-import Filters from './Filters';
+import { IGenre, IMovie } from '../types/interfaces';
+import FilterList from './FilterList';
+import FilterResults from './FilterResults';
 
 const Filter = () => {
   const [filterQuery, setFilterQuery] = useState('');
-  const [filterResults, setFilterResults] = useState([]);
+  const [filterResults, setFilterResults] = useState<Array<IMovie>>([]);
   const [error, setError] = useState('');
   const [totalPages, setTotalPages] = useState('');
   const [totalResults, setTotalResults] = useState('');
-  const [genreUIList, setGenreUIList] = useState('');
+  const [selectedGenres, setSelectedGenres] = useState<Array<string>>([]);
+  const [genreNames, setGenreNames] = useState<Array<string>>([]);
+
+  const FILTER_URL = `http://localhost:3000/filter?`;
+  const HOME_URL = `http://localhost:3000/test`;
+  const filterURL = FILTER_URL + '&with_genres=' + filterQuery;
 
   // TODO get genres from genres - or from context! and then use them as the select options programatically
-
-  // TODO add a RESET button to clear filters
   // TODO extract functions
-
-  const handleFilterSubmit = async () => {
-    setFilterQuery(encodeURI(selectedGenres.join(',')));
-    setGenreUIList(encodeURI(genreNames.join(',')));
-    setError('');
-    const filterURL =
-      `http://localhost:3000/filter?` + '&with_genres=' + filterQuery;
+  const fetchFilteredData = async (url: string) => {
     try {
-      const response = await fetch(filterURL);
+      const response = await fetch(url);
       const data = await response.json();
       setFilterResults(data.results);
       setTotalPages(data.total_pages.toString());
@@ -34,37 +32,39 @@ const Filter = () => {
     }
   };
 
-  const selectedGenres: string[] = [];
-  const genreNames: string[] = [];
-
-  const constructLists = (genre: IGenre) => {
-    if (selectedGenres.length === 0) {
-      selectedGenres.push(genre.id.toString());
-      genreNames.push(genre.name);
-    }
-    if (!selectedGenres.includes(genre.id.toString())) {
-      selectedGenres.push(genre.id.toString());
-      genreNames.push(genre.name);
-    }
+  const handleFilterSubmit = async (selectedGenres: string[]) => {
+    setFilterQuery(encodeURI(selectedGenres.join(',')));
+    setError('');
+    fetchFilteredData(filterURL);
   };
 
-  const handleGenres = (genre: IGenre) => {
+  const clearFilters = async () => {
+    setFilterQuery('');
+    setGenreNames([]);
     setError('');
-    setTotalResults('');
-    constructLists(genre);
+    fetchFilteredData(HOME_URL);
+  };
+  const createGenreList = (genre: IGenre) => {
+    if (selectedGenres.length === 0) {
+      setSelectedGenres([...selectedGenres, genre.id.toString()]);
+      setGenreNames([...genreNames, genre.name]);
+    }
+    if (!selectedGenres.includes(genre.id.toString())) {
+      setSelectedGenres([...selectedGenres, genre.id.toString()]);
+      setGenreNames([...genreNames, genre.name]);
+    }
+    handleFilterSubmit(selectedGenres);
   };
 
   return (
     <section className='filters'>
-      <Filters handleGenres={handleGenres} />
+      <FilterList createGenreList={createGenreList} />
       {totalResults && <span>{totalResults} result(s)</span>}
-      <button onClick={handleFilterSubmit}>Search</button>
-      {genreUIList && <span>You selected: {genreUIList} </span>}
-      <ul>
-        {filterResults?.map((movie) => (
-          <Movie movie={movie} />
-        ))}
-      </ul>
+      <div>
+        <button onClick={() => clearFilters()}>Clear Filters</button>
+      </div>
+      {genreNames.length > 0 && <h3> You selected: {genreNames}</h3>}
+      <FilterResults filterResults={filterResults} />
       {error && <div>{error}</div>}
     </section>
   );
