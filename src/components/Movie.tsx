@@ -1,11 +1,23 @@
-import React from 'react'
+import { IMovie } from '../types/interfaces';
 
-// type Props = {}
-// props: Props
-const Movie = () => {
-  return (
-    <div>Movies</div>
-  )
+interface IMovieProps {
+  movie: IMovie;
 }
 
-export default Movie
+const Movie: React.FC<IMovieProps> = ({ movie }) => {
+  const { id, title, overview, poster_path } = movie;
+  return (
+    <li key={id}>
+      <h2>{title}</h2>
+      <p>{overview}</p>
+      {poster_path && (
+        <img
+          src={`https://image.tmdb.org/t/p/w200${poster_path}`}
+          alt={title}
+        />
+      )}
+    </li>
+  );
+};
+
+export default Movie;
