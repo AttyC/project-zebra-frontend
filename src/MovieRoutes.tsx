@@ -1,7 +1,7 @@
 import { Routes, Route } from 'react-router-dom'
 import Movie from './components/Movie'
-import Home from './components/Home'
-import Layout from './components/Layout'
+import Home from './components/Home';
+import Layout from './components/Layout';
 import Genres from './components/Genres';
 
 const MovieRoutes = () => {
@@ -14,6 +14,6 @@ const MovieRoutes = () => {
       </Route>
     </Routes>
   );
-}
+};
 
 export default MovieRoutes

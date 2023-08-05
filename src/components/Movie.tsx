@@ -1,15 +1,15 @@
-interface Movie {
+interface IMovie {
   id: number;
   title: string;
   overview: string;
   poster_path: string;
 }
 
-interface MovieProps {
-  movie: Movie;
+interface IMovieProps {
+  movie: IMovie;
 }
 
-const Movie: React.FC<MovieProps> = ({ movie }) => {
+const Movie: React.FC<IMovieProps> = ({ movie }) => {
   const { id, title, overview, poster_path } = movie;
   return (
     <li key={id}>
