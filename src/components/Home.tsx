@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 
 import Movie from './Movie';
-import { IMovie } from '../types/IMovie';
+import { IMovie } from '../types/interfaces';
 
 const Home = () => {
   const [movies, setMovies] = useState<IMovie[]>([]);

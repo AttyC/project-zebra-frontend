@@ -1,15 +1,16 @@
 import { Outlet } from 'react-router-dom'
 import SearchBar from './SearchBar'
-// type Props = {}
-// props: Props
+import Filter from './Filter';
 
 const Layout = () => {
   return (
-    <div>Layout
+    <div>
+      Layout
       <SearchBar />
+      <Filter />
       <Outlet />
     </div>
-  )
-}
+  );
+};
 
 export default Layout
