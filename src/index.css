@@ -71,3 +71,14 @@ button:focus-visible {
     background-color: #f9f9f9;
   }
 }
+
+.genre-list {
+  display: flex;
+  flex-wrap: wrap;
+}
+.genre-list li {
+  margin: 0.25rem;
+  padding: 0.25rem;
+  border: 1px solid lightgrey;
+  border-radius: 10px;
+}
