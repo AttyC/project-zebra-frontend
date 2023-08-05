@@ -1,14 +1,6 @@
 import { useState, useEffect } from "react";
 
-interface Movie {
-  id: number;
-  title: string;
-  overview: string;
-  poster_path: string;
-}
-
-// type Props = {}
-// props: Props
+import Movie from './Movie';
 const Home = () => {
   const [movies, setMovies] = useState<Movie[]>([]);
 
@@ -40,20 +32,11 @@ const Home = () => {
       <h1>Popular Movies</h1>
       <ul>
         {movies.map((movie) => (
-          <li key={movie.id}>
-            <h2>{movie.title}</h2>
-            <p>{movie.overview}</p>
-            {movie.poster_path && (
-              <img
-                src={`https://image.tmdb.org/t/p/w200${movie.poster_path}`}
-                alt={movie.title}
-              />
-            )}
-          </li>
+          <Movie movie={movie} />
         ))}
       </ul>
     </div>
-  )
+  );
 }
 
 export default Home
