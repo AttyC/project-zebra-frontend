@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import Movie from './Movie';
 import { IGenre } from '../types/interfaces';
+import Filters from './Filters';
 
 const Filter = () => {
   const [filterQuery, setFilterQuery] = useState('');
@@ -11,84 +12,9 @@ const Filter = () => {
   const [genreUIList, setGenreUIList] = useState('');
 
   // TODO get genres from genres - or from context! and then use them as the select options programatically
-  const genres = [
-    {
-      id: 28,
-      name: 'Action',
-    },
-    {
-      id: 12,
-      name: 'Adventure',
-    },
-    {
-      id: 16,
-      name: 'Animation',
-    },
-    {
-      id: 35,
-      name: 'Comedy',
-    },
-    {
-      id: 80,
-      name: 'Crime',
-    },
-    {
-      id: 99,
-      name: 'Documentary',
-    },
-    {
-      id: 18,
-      name: 'Drama',
-    },
-    {
-      id: 10751,
-      name: 'Family',
-    },
-    {
-      id: 14,
-      name: 'Fantasy',
-    },
-    {
-      id: 36,
-      name: 'History',
-    },
-    {
-      id: 27,
-      name: 'Horror',
-    },
-    {
-      id: 10402,
-      name: 'Music',
-    },
-    {
-      id: 9648,
-      name: 'Mystery',
-    },
-    {
-      id: 10749,
-      name: 'Romance',
-    },
-    {
-      id: 878,
-      name: 'Science Fiction',
-    },
-    {
-      id: 10770,
-      name: 'TV Movie',
-    },
-    {
-      id: 53,
-      name: 'Thriller',
-    },
-    {
-      id: 10752,
-      name: 'War',
-    },
-    {
-      id: 37,
-      name: 'Western',
-    },
-  ];
+
+  // TODO add a RESET button to clear filters
+  // TODO extract functions
 
   const handleFilterSubmit = async () => {
     setFilterQuery(encodeURI(selectedGenres.join(',')));
@@ -129,25 +55,18 @@ const Filter = () => {
   };
 
   return (
-    <div>
-      <label htmlFor='filter'>Refine results</label>
-
-      <ul className='genre-list'>
-        {genres?.map((genre) => (
-          <li onClick={() => handleGenres(genre)}>{genre.name}</li>
-        ))}
-      </ul>
+    <section className='filters'>
+      <Filters handleGenres={handleGenres} />
       {totalResults && <span>{totalResults} result(s)</span>}
       <button onClick={handleFilterSubmit}>Search</button>
       {genreUIList && <span>You selected: {genreUIList} </span>}
-      <div>Here are your results:</div>
       <ul>
         {filterResults?.map((movie) => (
           <Movie movie={movie} />
         ))}
       </ul>
       {error && <div>{error}</div>}
-    </div>
+    </section>
   );
 };
 

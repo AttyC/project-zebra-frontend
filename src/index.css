@@ -72,11 +72,11 @@ button:focus-visible {
   }
 }
 
-.genre-list {
+.filter-list {
   display: flex;
   flex-wrap: wrap;
 }
-.genre-list li {
+.filter-list li {
   margin: 0.25rem;
   padding: 0.25rem;
   border: 1px solid lightgrey;
