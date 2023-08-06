@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import Movie from './Movie';
 import { IGenre, IMovie } from '../types/interfaces';
 import FilterList from './FilterList';
 import FilterResults from './FilterResults';
@@ -18,7 +17,7 @@ const Filter = () => {
   const filterURL = FILTER_URL + '&with_genres=' + filterQuery;
 
   // TODO get genres from genres - or from context! and then use them as the select options programatically
-  // TODO extract functions
+
   const fetchFilteredData = async (url: string) => {
     try {
       const response = await fetch(url);
@@ -63,7 +62,7 @@ const Filter = () => {
       <div>
         <button onClick={() => clearFilters()}>Clear Filters</button>
       </div>
-      {genreNames.length > 0 && <h3> You selected: {genreNames}</h3>}
+      {genreNames.length > 0 && <h3> You selected: {genreNames.join(', ')}</h3>}
       <FilterResults filterResults={filterResults} />
       {error && <div>{error}</div>}
     </section>
