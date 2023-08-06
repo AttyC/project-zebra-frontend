@@ -87,10 +87,10 @@ const FilterList: React.FC<IFilterListProps> = ({ createGenreList }) => {
   return (
     <div>
       <h2>Filtered Results</h2>
-      <ul className='filter-list'>
+      <ul className='filter__list'>
         {genres?.map((genre) => (
           <li key={genre.id} onClick={() => createGenreList(genre)}>
-            {genre.name}
+            <p className='filter__list--item'>{genre.name}</p>
           </li>
         ))}
       </ul>
