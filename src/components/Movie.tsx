@@ -5,9 +5,9 @@ interface IMovieProps {
 }
 
 const Movie: React.FC<IMovieProps> = ({ movie }) => {
-  const { id, title, overview, poster_path } = movie;
+  const { title, overview, poster_path } = movie;
   return (
-    <li key={id}>
+    <>
       <h2>{title}</h2>
       <p>{overview}</p>
       {poster_path && (
@@ -16,7 +16,7 @@ const Movie: React.FC<IMovieProps> = ({ movie }) => {
           alt={title}
         />
       )}
-    </li>
+    </>
   );
 };
 

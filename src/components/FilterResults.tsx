@@ -12,7 +12,9 @@ const FilterResults: React.FC<IFilterResults> = ({ filterResults }) => {
       Filtered Results
       <ul>
         {filterResults?.map((movie) => (
-          <Movie movie={movie} />
+          <li key={movie.id}>
+            <Movie movie={movie} />
+          </li>
         ))}
       </ul>
     </div>
