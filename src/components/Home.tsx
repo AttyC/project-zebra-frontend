@@ -33,7 +33,9 @@ const Home = () => {
       <h1>Popular Movies</h1>
       <ul>
         {movies?.map((movie) => (
-          <Movie movie={movie} />
+          <li key={movie.id}>
+            <Movie movie={movie} />
+          </li>
         ))}
       </ul>
     </div>
