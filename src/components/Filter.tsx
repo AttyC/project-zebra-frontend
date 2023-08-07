@@ -4,18 +4,15 @@ import FilterList from './FilterList';
 import FilterResults from './FilterResults';
 
 const Filter = () => {
-  const [filterQuery, setFilterQuery] = useState('');
   const [filterResults, setFilterResults] = useState<Array<IMovie>>([]);
   const [error, setError] = useState('');
   const [totalPages, setTotalPages] = useState('');
   const [totalResults, setTotalResults] = useState('');
-  const [selectedGenres, setSelectedGenres] = useState<Array<string>>([]);
   const [genreNames, setGenreNames] = useState<Array<string>>([]);
 
   const FILTER_URL = `http://localhost:3000/filter?`;
   const HOME_URL = `http://localhost:3000/test`;
-  const filterURL = FILTER_URL + '&with_genres=' + filterQuery;
-
+  const selectedGenres:Array<string> = []
   // TODO get genres from genres - or from context! and then use them as the select options programatically
 
   const fetchFilteredData = async (url: string) => {
@@ -31,28 +28,25 @@ const Filter = () => {
     }
   };
 
-  const handleFilterSubmit = async (selectedGenres: string[]) => {
-    setFilterQuery(encodeURI(selectedGenres.join(',')));
-    setError('');
-    fetchFilteredData(filterURL);
-  };
-
   const clearFilters = async () => {
-    setFilterQuery('');
     setGenreNames([]);
     setError('');
     fetchFilteredData(HOME_URL);
   };
+  const toggleClass = (id) => {}
   const createGenreList = (genre: IGenre) => {
+toggleClass(id)
+
+
     if (selectedGenres.length === 0) {
-      setSelectedGenres([...selectedGenres, genre.id.toString()]);
+      selectedGenres.push(genre.id.toString());
       setGenreNames([...genreNames, genre.name]);
     }
     if (!selectedGenres.includes(genre.id.toString())) {
-      setSelectedGenres([...selectedGenres, genre.id.toString()]);
+      selectedGenres.push(genre.id.toString());
       setGenreNames([...genreNames, genre.name]);
     }
-    handleFilterSubmit(selectedGenres);
+    selectedGenres.length !==0 && fetchFilteredData(FILTER_URL + '&with_genres=' + encodeURI(selectedGenres.join(',')));
   };
 
   return (
