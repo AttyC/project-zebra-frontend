@@ -8,7 +8,8 @@ const Filter = () => {
   const [error, setError] = useState('');
   const [totalPages, setTotalPages] = useState('');
   const [totalResults, setTotalResults] = useState('');
-  const [genreNames, setGenreNames] = useState<Array<string>>([]);
+
+  // const [selectedGenres, setSelectedGenres] = useState<Array<string>>([])
 
   const FILTER_URL = `http://localhost:3000/filter?`;
   const HOME_URL = `http://localhost:3000/test`;
@@ -27,26 +28,30 @@ const Filter = () => {
       setError('There was an error fetching movies! Please try again.');
     }
   };
-
-  const clearFilters = async () => {
-    setGenreNames([]);
+ const clearFilters = async () => {
     setError('');
     fetchFilteredData(HOME_URL);
-  };
-  const toggleClass = (id) => {}
+ };
+  
+  const highlightselection = () => {
+    if (selectedGenres.length != 0) {
+      selectedGenres.forEach(id => {
+        const highLightedTag = document.getElementById(id);
+        highLightedTag?.classList.toggle('highlight');
+      });
+  }
+}
   const createGenreList = (genre: IGenre) => {
-toggleClass(id)
-
-
     if (selectedGenres.length === 0) {
       selectedGenres.push(genre.id.toString());
-      setGenreNames([...genreNames, genre.name]);
-    }
-    if (!selectedGenres.includes(genre.id.toString())) {
+      // setSelectedGenres([...selectedGenres,genre.id.toString() ]);
+    } else if (!selectedGenres.includes(genre.id.toString())) {
       selectedGenres.push(genre.id.toString());
-      setGenreNames([...genreNames, genre.name]);
+      // setSelectedGenres([...selectedGenres,genre.id.toString() ]);
     }
-    selectedGenres.length !==0 && fetchFilteredData(FILTER_URL + '&with_genres=' + encodeURI(selectedGenres.join(',')));
+    highlightselection()
+    selectedGenres.length !== 0 && fetchFilteredData(FILTER_URL + '&with_genres=' + encodeURI(selectedGenres.join(',')));
+   
   };
 
   return (
@@ -56,7 +61,6 @@ toggleClass(id)
       <div>
         <button onClick={() => clearFilters()}>Clear Filters</button>
       </div>
-      {genreNames.length > 0 && <h3> You selected: {genreNames.join(', ')}</h3>}
       <FilterResults filterResults={filterResults} />
       {error && <div>{error}</div>}
     </section>

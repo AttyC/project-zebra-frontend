@@ -82,7 +82,10 @@ button:focus-visible {
   border: 1px solid lightgrey;
   border-radius: 10px;
 }
-.filter__list--item:hover,
-.filter__list--item:active {
+.filter__list--item-p:hover,
+.filter__list--item-p:active {
   background-color:orange;
+}
+.highlight {
+  background-color: salmon;
 }
