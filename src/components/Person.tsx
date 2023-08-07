@@ -22,13 +22,18 @@ const PersonDetails: React.FC = () => {
     };
 
     fetchPersonData();
-  }, []);
+  }, [API_URL]);
 
   return (
     <div>
       {personData ? (
         <>
           <h2>{personData.name}</h2>
+          {personData.profile_path && (
+            <img
+              src={`https://image.tmdb.org/t/p/w200${personData.profile_path}`} //BW - Move this to the server and just send profile_path, make sure to do url encoding
+            />
+          )}
           <p>Birthday: {personData.birthday}</p>
           <p>Place of Birth: {personData.place_of_birth}</p>
           <p>Department: {personData.known_for_department}</p>
