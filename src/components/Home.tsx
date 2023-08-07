@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 
 import Movie from './Movie';
-import { IMovie } from '../types/IMovie';
+import { IMovie } from '../types/interfaces';
 
 const Home = () => {
   const [movies, setMovies] = useState<IMovie[]>([]);
@@ -33,7 +33,9 @@ const Home = () => {
       <h1>Popular Movies</h1>
       <ul>
         {movies?.map((movie) => (
-          <Movie movie={movie} />
+          <li key={movie.id}>
+            <Movie movie={movie} />
+          </li>
         ))}
       </ul>
     </div>

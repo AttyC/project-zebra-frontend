@@ -4,3 +4,8 @@ export interface IMovie {
   overview: string;
   poster_path: string;
 }
+
+export interface IGenre {
+  id: number;
+  name: string;
+}

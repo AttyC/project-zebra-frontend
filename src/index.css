@@ -71,3 +71,18 @@ button:focus-visible {
     background-color: #f9f9f9;
   }
 }
+
+.filter__list {
+  display: flex;
+  flex-wrap: wrap;
+}
+.filter__list--item {
+  margin: 0.25rem;
+  padding: 0.25rem;
+  border: 1px solid lightgrey;
+  border-radius: 10px;
+}
+.filter__list--item:hover,
+.filter__list--item:active {
+  background-color:orange;
+}
