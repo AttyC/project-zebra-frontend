@@ -89,3 +89,8 @@ button:focus-visible {
 .filter__list--item:active {
   background-color:orange;
 }
+
+.highlight {
+    background-color:rgba(0, 0, 139, 0.734);
+    color: white;
+}

@@ -31,7 +31,7 @@ const Home = () => {
   return (
       <section>
           <h1>Popular Movies</h1>
-          <ul className="flex flex-wrap justify-between">
+          <ul className="flex flex-wrap justify-center">
               {movies?.map((movie) => (
                   <li key={movie.id}>
                       <Movie movie={movie} />
