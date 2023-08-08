@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { MovieDetails as MovieDetailType } from '../types/interfaces';
 import { useParams } from 'react-router-dom';
+import MovieCredits from './MovieCredits';
 
 const MovieDetails: React.FC = () => {
     const [movieData, setMovieData] = useState<MovieDetailType | null>(null);
@@ -48,7 +49,7 @@ const MovieDetails: React.FC = () => {
                         <div className="md:flex ">
                             {movieData.poster_path && (
                                 <img
-                                    src={`https://image.tmdb.org/t/p/w200${movieData.poster_path}`}
+                                    src={movieData.poster_path}
                                     className="w-auto h-96 object-cover rounded-lg"
                                     alt={movieData.title}
                                 />
@@ -94,6 +95,10 @@ const MovieDetails: React.FC = () => {
                             </div>
                         </div>
                     </div>
+                    <MovieCredits
+                        credits={movieData.credits}
+                        maxCreditsToShow={10}
+                    />
                 </>
             ) : (
                 <p>Loading...</p>
