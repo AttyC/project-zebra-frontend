@@ -16,6 +16,9 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
+
+  margin: 0 auto;
+  max-width: 90%;
 }
 
 a {
@@ -86,6 +89,8 @@ button:focus-visible {
 .filter__list--item-p:active {
   background-color:orange;
 }
+
 .highlight {
-  background-color: salmon;
+    background-color:rgba(0, 0, 139, 0.734);
+    color: white;
 }
