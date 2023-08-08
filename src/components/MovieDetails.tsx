@@ -26,32 +26,74 @@ const MovieDetails: React.FC = () => {
         fetchMovieData();
     }, [API_URL]);
 
+    function formatRuntime(minutes: number): string {
+        const hours = Math.floor(minutes / 60);
+        const remainingMinutes = minutes % 60;
+        return `${hours}h ${remainingMinutes}m`;
+    }
+
+    function formatCurrency(value: number): string {
+        const million = 1000000;
+        return `$${(value / million).toLocaleString('en-US', {
+            minimumFractionDigits: 0,
+            maximumFractionDigits: 0,
+        })}M`;
+    }
+
     return (
-        <div>
+        <div className="bg-gray-200 p-5">
             {movieData ? (
                 <>
-                    <h2>{movieData.title}</h2>
-                    <h3>{movieData.tagline}</h3>
-                    <ul>
-                        {movieData.genres.map((genre) => (
-                            <li key={genre.id}>{genre.name}</li>
-                        ))}
-                    </ul>
-                    {movieData.poster_path && (
-                        <img
-                            src={`https://image.tmdb.org/t/p/w200${movieData.poster_path}`} //BW - Move this to the server and just send profile_path, make sure to do url encoding
-                        />
-                    )}
-                    <p>{movieData.overview}</p>
-                    <p>Release Date: {movieData.release_date}</p>
-                    <p>Runtime: {movieData.runtime}</p>
-                    <p>Budget: {movieData.budget}</p>
-                    <p>Revenue: {movieData.revenue}</p>
-                    {movieData.poster_path && (
-                        <img
-                            src={`https://image.tmdb.org/t/p/w200${movieData.backdrop_path}`} //BW - Move this to the server and just send profile_path, make sure to do url encoding
-                        />
-                    )}
+                    <div>
+                        <div className="md:flex ">
+                            {movieData.poster_path && (
+                                <img
+                                    src={`https://image.tmdb.org/t/p/w200${movieData.poster_path}`}
+                                    className="w-auto h-96 object-cover rounded-lg"
+                                    alt={movieData.title}
+                                />
+                            )}
+                            <div className="flex bg-gray-100 flex-col p-4">
+                                <h2 className="text-2xl font-bold">
+                                    {movieData.title}
+                                </h2>
+                                <div className="flex items-center mb-4 text-xs">
+                                    <p className="mr-2">
+                                        {new Date(
+                                            movieData.release_date,
+                                        ).toLocaleDateString('en-GB')}
+                                    </p>
+                                    <span className="mr-2">&#8226;</span>
+                                    <p className="mr-2">
+                                        {' '}
+                                        {movieData.genres
+                                            .map((genre) => genre.name)
+                                            .join(', ')}
+                                    </p>
+                                    <span className="mr-2">&#8226;</span>
+                                    <p> {formatRuntime(movieData.runtime)}</p>
+                                </div>
+                                <p className="text-sm italic pb-2">
+                                    {movieData.tagline}
+                                </p>
+                                <p className="text-base font-bold">Overview</p>
+                                <p className="text-sm pb-4">
+                                    {movieData.overview}
+                                </p>
+                                <div className="flex items-center text-sm mb-4">
+                                    <p className="mr-2">
+                                        Budget:{' '}
+                                        {formatCurrency(movieData.budget)}
+                                    </p>
+                                    <span className="mr-2">&#8226;</span>
+                                    <p>
+                                        Revenue:{' '}
+                                        {formatCurrency(movieData.revenue)}
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </>
             ) : (
                 <p>Loading...</p>
