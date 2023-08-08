@@ -1,10 +1,4 @@
-import React from 'react';
-import { IGenre } from '../types/interfaces';
-interface IFilterListProps {
-    createGenreList: (genre: IGenre) => void;
-}
-
-const genres = [
+export const genresMap = [
     {
         id: 28,
         name: 'Action',
@@ -82,23 +76,3 @@ const genres = [
         name: 'Western',
     },
 ];
-
-const FilterList: React.FC<IFilterListProps> = ({ createGenreList }) => (
-    <ul className="filter__list md:max-w-4xl flex justify-center my-4">
-        {genres?.map((genre) => (
-            <li
-                key={genre.id}
-                className="filter__list--item"
-            >
-                <button
-                    className="p-2 filter__list--item--button"
-                    key={genre.id}
-                >
-                    {genre.name}
-                </button>
-            </li>
-        ))}
-    </ul>
-);
-
-export default FilterList;
