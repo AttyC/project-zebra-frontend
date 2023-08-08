@@ -32,25 +32,35 @@ const Filter = () => {
         fetchFilteredData(HOME_URL);
     };
 
-    const highlightselection = () => {
-        if (selectedGenres.length !== 0) {
-            selectedGenres.forEach((id) => {
+    const highlightselection = (currentGenres: Array<string>) => {
+        if (currentGenres.length !== 0) {
+            currentGenres.forEach((id) => {
                 const highLightedTag = document.getElementById(id);
                 highLightedTag?.classList.add('highlight');
             });
         }
     };
     const createGenreList = async (genre: IGenre) => {
-        const currentGenres = [...selectedGenres, genre.id.toString()];
+        let currentGenres = selectedGenres;
+        if (currentGenres.includes(genre.id.toString())) {
+            currentGenres.forEach((id, idx) => {
+                if (id == genre.id) {
+                    currentGenres.splice(idx, 1);
+                }
+            });
+        }
+        currentGenres = [...selectedGenres, genre.id.toString()];
+
         const fetchUrl =
             FILTER_URL + '&with_genres=' + encodeURI(currentGenres.join(','));
         fetchFilteredData(fetchUrl);
-
+        highlightselection(currentGenres);
         selectedGenres.length === 0 && setSelectedGenres(currentGenres);
+
         !selectedGenres.includes(genre.id.toString()) &&
             setSelectedGenres(currentGenres);
 
-        highlightselection();
+        highlightselection(currentGenres);
     };
 
     return (
