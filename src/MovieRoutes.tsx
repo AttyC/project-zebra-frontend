@@ -10,7 +10,6 @@ const MovieRoutes = () => {
         <Routes>
             <Route path="/" element={<Layout />}>
                 <Route index element={<Home />} />
-
                 <Route path="movie" element={<Movie />} />
                 <Route path="genres" element={<Genres />} />
                 <Route path="person/:id" element={<PersonDetails />} />
