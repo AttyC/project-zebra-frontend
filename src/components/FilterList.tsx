@@ -83,19 +83,14 @@ const genres = [
   },
 ];
 
-const FilterList: React.FC<IFilterListProps> = ({ createGenreList }) => {
-  return (
-    <div>
-      <h2>Filtered Results</h2>
-      <ul className='filter__list'>
+const FilterList: React.FC<IFilterListProps> = ({ createGenreList }) => (
+    <ul className="filter__list">
         {genres?.map((genre) => (
-          <li key={genre.id} onClick={() => createGenreList(genre)}>
-            <p className='filter__list--item'>{genre.name}</p>
-          </li>
+            <li key={genre.id} onClick={() => createGenreList(genre)}>
+                <p className="filter__list--item">{genre.name}</p>
+            </li>
         ))}
-      </ul>
-    </div>
-  );
-};
+    </ul>
+);
 
 export default FilterList;
