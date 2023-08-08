@@ -6,7 +6,6 @@ const PersonDetails: React.FC = () => {
     const [personData, setPersonData] = useState<PersonDetailType | null>(null);
     const { id } = useParams<{ id: string }>();
     const API_URL = `http://localhost:3000/person/${id}`;
-    const IMAGE_BASE_URL = 'https://image.tmdb.org/t/p/w200';
 
     useEffect(() => {
         const fetchPersonData = async () => {
