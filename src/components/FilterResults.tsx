@@ -6,19 +6,14 @@ interface IFilterResults {
   filterResults: Array<IMovie>;
 }
 
-const FilterResults: React.FC<IFilterResults> = ({ filterResults }) => {
-  return (
-    <div>
-      Filtered Results
-      <ul>
+const FilterResults: React.FC<IFilterResults> = ({ filterResults }) => (
+    <ul className="flex flex-wrap justify-between">
         {filterResults?.map((movie) => (
-          <li key={movie.id}>
-            <Movie movie={movie} />
-          </li>
+            <li key={movie.id}>
+                <Movie movie={movie} />
+            </li>
         ))}
-      </ul>
-    </div>
-  );
-};
+    </ul>
+);
 
 export default FilterResults;

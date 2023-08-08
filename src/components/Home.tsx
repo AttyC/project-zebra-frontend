@@ -29,16 +29,16 @@ const Home = () => {
   }, []);
 
   return (
-    <div>
-      <h1>Popular Movies</h1>
-      <ul>
-        {movies?.map((movie) => (
-          <li key={movie.id}>
-            <Movie movie={movie} />
-          </li>
-        ))}
-      </ul>
-    </div>
+      <section>
+          <h1>Popular Movies</h1>
+          <ul className="flex flex-wrap justify-between">
+              {movies?.map((movie) => (
+                  <li key={movie.id}>
+                      <Movie movie={movie} />
+                  </li>
+              ))}
+          </ul>
+      </section>
   );
 };
 
