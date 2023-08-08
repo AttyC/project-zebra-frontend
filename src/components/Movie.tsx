@@ -1,7 +1,7 @@
 import { IMovie } from '../types/interfaces';
 
 interface IMovieProps {
-  movie: IMovie;
+    movie: IMovie;
 }
 
 const Movie: React.FC<IMovieProps> = ({ movie }) => {
