@@ -9,7 +9,7 @@ const Filter = () => {
     const [totalPages, setTotalPages] = useState('');
     const [totalResults, setTotalResults] = useState('');
     const [selectedGenres, setSelectedGenres] = useState<Array<string>>([]);
-
+    const [showClearButton, setShowClearButton] = useState(false);
     const FILTER_URL = `http://localhost:3000/filter?`;
     const HOME_URL = `http://localhost:3000/test`;
 
@@ -33,13 +33,21 @@ const Filter = () => {
     };
 
     const highlightselection = (currentGenres: Array<string>) => {
+        const tags = document.querySelectorAll('.filter__list--item--button');
+        tags.forEach((tag) => {
+            tag.classList.remove('highlight');
+            setShowClearButton(false);
+        });
+        setShowClearButton(false);
         if (currentGenres.length !== 0) {
             currentGenres.forEach((id) => {
                 const highLightedTag = document.getElementById(id);
                 highLightedTag?.classList.add('highlight');
             });
+            setShowClearButton(true);
         }
     };
+
     const createGenreList = async (genre: IGenre) => {
         let currentGenres = selectedGenres;
         if (currentGenres.includes(genre.id.toString())) {
@@ -48,13 +56,13 @@ const Filter = () => {
                     currentGenres.splice(idx, 1);
                 }
             });
+        } else {
+            currentGenres = [...selectedGenres, genre.id.toString()];
         }
-        currentGenres = [...selectedGenres, genre.id.toString()];
 
         const fetchUrl =
             FILTER_URL + '&with_genres=' + encodeURI(currentGenres.join(','));
         fetchFilteredData(fetchUrl);
-        highlightselection(currentGenres);
         selectedGenres.length === 0 && setSelectedGenres(currentGenres);
 
         !selectedGenres.includes(genre.id.toString()) &&
@@ -64,10 +72,20 @@ const Filter = () => {
     };
 
     return (
-        <section className="filters">
-            <FilterList createGenreList={createGenreList} />
-            {totalResults && <span>{totalResults} result(s)</span>}
-            <button onClick={() => clearFilters()}>Clear Filters</button>
+        <section className="filters flex justify-center">
+            <div>
+                <FilterList createGenreList={createGenreList} />
+                {totalResults && <span>{totalResults} result(s)</span>}
+                {showClearButton && (
+                    <button
+                        onClick={() => clearFilters()}
+                        className="highlight"
+                        id="clear"
+                    >
+                        Clear
+                    </button>
+                )}
+            </div>
             <FilterResults filterResults={filterResults} />
             {error && <div>{error}</div>}
         </section>

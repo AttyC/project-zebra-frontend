@@ -84,15 +84,19 @@ const genres = [
 ];
 
 const FilterList: React.FC<IFilterListProps> = ({ createGenreList }) => (
-    <ul className="filter__list">
+    <ul className="filter__list md:max-w-4xl flex justify-center my-4">
         {genres?.map((genre) => (
             <li
                 key={genre.id}
-                id={genre.id}
                 onClick={() => createGenreList(genre)}
                 className="filter__list--item"
             >
-                <p className="filter__list--item-p">{genre.name}</p>
+                <button
+                    className="p-2 filter__list--item--button"
+                    id={genre.id}
+                >
+                    {genre.name}
+                </button>
             </li>
         ))}
     </ul>
