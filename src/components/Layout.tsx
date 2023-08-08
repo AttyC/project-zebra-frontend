@@ -6,7 +6,7 @@ import SearchAndFilter from './SearchAndFilter';
 import '../index.css';
 const Layout = () => {
     return (
-        <div className="p-6">
+        <div className="lg:p-6">
             <Header />
             <SearchAndFilter />
             <main>

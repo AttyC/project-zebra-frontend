@@ -7,7 +7,7 @@ interface IFilterResults {
 }
 
 const FilterResults: React.FC<IFilterResults> = ({ filterResults }) => (
-    <ul className="flex flex-wrap justify-between">
+    <ul className="flex flex-wrap justify-center">
         {filterResults?.map((movie) => (
             <li key={movie.id}>
                 <Movie movie={movie} />
