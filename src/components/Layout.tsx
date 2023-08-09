@@ -1,16 +1,16 @@
 import { Outlet } from 'react-router-dom'
-import SearchBar from './SearchBar'
-import Filter from './Filter';
+
+import { Header } from './Header';
 
 const Layout = () => {
-  return (
-    <div>
-      Layout
-      <SearchBar />
-      <Filter />
-      <Outlet />
-    </div>
-  );
+    return (
+        <div className="lg:p-6">
+            <Header />
+            <main>
+                <Outlet />
+            </main>
+        </div>
+    );
 };
 
 export default Layout
