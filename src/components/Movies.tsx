@@ -11,6 +11,8 @@ const Movies: React.FC<IMovieListProps> = ({ criteria }) => {
 
     const url = `http://localhost:3000/${criteria}`;
 
+    console.log('url', url);
+
     useEffect(() => {
         const fetchMovieData = async () => {
             try {
@@ -28,7 +30,7 @@ const Movies: React.FC<IMovieListProps> = ({ criteria }) => {
         };
 
         fetchMovieData();
-    }, []);
+    }, [criteria]);
 
     return (
         <section className="py-8">
