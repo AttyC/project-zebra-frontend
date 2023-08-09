@@ -6,6 +6,7 @@ import Genres from './components/Genres';
 import PersonDetails from './components/Person';
 import MovieDetails from './components/MovieDetails';
 import UpcomingMovies from './components/UpcomingMovies';
+import Health from './components/Health';
 import NotFound from './components/NotFound';
 
 const MovieRoutes = () => {
@@ -17,6 +18,8 @@ const MovieRoutes = () => {
                 <Route path="person/:id" element={<PersonDetails />} />
                 <Route path="movie/:id" element={<MovieDetails />} />
                 <Route path="upcomingMovies" element={<UpcomingMovies />} />
+                <Route path="movie/:id" element={<MovieDetails />} />
+                <Route path="health" element={<Health />} />
                 <Route path="*" element={<NotFound />} />
             </Route>
         </Routes>
