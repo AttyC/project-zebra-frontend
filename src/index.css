@@ -20,9 +20,6 @@
     margin: 0 auto;
 }
 
-#root {
-    /* max-width: 90%; */
-}
 a {
     font-weight: 500;
     color: #646cff;
@@ -30,24 +27,39 @@ a {
 }
 
 a:hover {
-    color: #535bf2;
+    color: #09814a;
 }
 
 body {
     margin: 0;
+    font-family: 'Open Sans', sans-serif;
 }
 
 h1 {
     font-size: 3.2em;
     line-height: 1.1;
 }
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+label,
+input::placeholder,
+input,
+nav {
+    font-family: 'Staatliches', cursive;
+    letter-spacing: 0.04rem;
+}
 
 button {
     border-radius: 8px;
     padding: 0.4em 0.8em;
-    font-size: 1em;
-    font-weight: 500;
-    font-family: inherit;
+    font-size: 1.1em;
+    font-weight: 400;
+    font-family: 'Staatliches', cursive;
+    letter-spacing: 0.04rem;
     background-color: #1a1a1a;
     cursor: pointer;
     transition: border-color 0.25s;
@@ -73,7 +85,7 @@ input:focus {
     }
 
     a:hover {
-        color: #747bff;
+        color: #e94f37;
     }
 
     button {
@@ -102,7 +114,7 @@ button:hover {
 
 .filter__list--item {
     margin: 0.25rem;
-    padding: 0.25rem;
+    padding: 0.25rem 0.5rem;
     border: 1px solid lightgrey;
     border-radius: 10px;
 }
@@ -122,6 +134,7 @@ button:hover {
     border-radius: 4px;
     width: 36rem;
     max-width: 100%;
+    font-size: 1.2rem;
 }
 
 label {

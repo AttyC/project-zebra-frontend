@@ -11,7 +11,7 @@ const SearchBar = () => {
         <>
             <label
                 htmlFor="searchInput"
-                className="max-w-sm font-semibold my-2"
+                className="max-w-sm font-semibold my-2 text-xl"
             >
                 Search for a movie...
             </label>
