@@ -43,15 +43,16 @@ const PersonDetails: React.FC = () => {
                                 <h2 className="text-2xl font-bold pb-4">
                                     {personData.name}
                                 </h2>
-                                <h3 className="text-base font-bold">
-                                    Biography
-                                </h3>
+                                <h3>Biography</h3>
 
                                 <p className="text-sm pb-4">
                                     {personData.biography}
                                 </p>
                                 <p className="text-sm pb-2">
-                                    Birthday: {personData.birthday}
+                                    Born:{' '}
+                                    {new Date(
+                                        personData.birthday,
+                                    ).toLocaleDateString('en-GB')}
                                 </p>
                                 <p className="text-sm pb-2">
                                     Place of Birth: {personData.place_of_birth}
