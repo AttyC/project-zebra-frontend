@@ -8,14 +8,13 @@ const SearchBar = () => {
         setQuery(value);
     };
     return (
-        <div>
-            <input
-                type="text"
-                placeholder="Type to search for a movie..."
-                value={query}
-                onChange={(e) => handleChange(e.target.value)}
-            />
-        </div>
+        <input
+            type="text"
+            placeholder="Type to search for a movie..."
+            value={query}
+            onChange={(e) => handleChange(e.target.value)}
+            className="searchInput"
+        />
     );
 };
 

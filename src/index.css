@@ -111,3 +111,8 @@ button:hover {
 .filter__button--active {
     background-color: rgb(55, 39, 160);
 }
+
+.searchInput {
+    padding: 10px;
+    margin-bottom: 10px;
+}

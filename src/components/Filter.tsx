@@ -3,7 +3,6 @@ import { useGenres } from '../hooks/useGenres';
 import { SearchContext } from '../hooks/SearchContext';
 
 import FilterButton from './FilterButton';
-import './styles/Filter.css';
 
 const Filter = () => {
     const { genresList } = useGenres();
@@ -11,7 +10,7 @@ const Filter = () => {
 
     const clearFilters = async () => {
         setGenres([]);
-        setQuery('')
+        setQuery('');
     };
 
     return (
