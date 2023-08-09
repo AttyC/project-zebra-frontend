@@ -42,67 +42,73 @@ const MovieDetails: React.FC = () => {
     }
 
     return (
-        <div className="bg-gray-200 p-5">
-            {movieData ? (
-                <>
-                    <div>
-                        <div className="md:flex ">
-                            {movieData.poster_path && (
-                                <img
-                                    src={movieData.poster_path}
-                                    className="w-auto h-96 object-cover rounded-lg"
-                                    alt={movieData.title}
-                                />
-                            )}
-                            <div className="flex bg-gray-100 flex-col p-4">
-                                <h2 className="text-2xl font-bold">
-                                    {movieData.title}
-                                </h2>
-                                <div className="flex items-center mb-4 text-xs">
-                                    <p className="mr-2">
-                                        {new Date(
-                                            movieData.release_date,
-                                        ).toLocaleDateString('en-GB')}
+        <div className="flex justify-center items-center">
+            <div className=" p-5 bg-gray-200 dark:bg-gray-800 w-full md:w-2/3 lg:w-3/5">
+                {movieData ? (
+                    <>
+                        <div>
+                            <div className="md:flex w-full ">
+                                {movieData.poster_path && (
+                                    <img
+                                        src={movieData.poster_path}
+                                        className="w-auto h-96 object-cover rounded-lg"
+                                        alt={movieData.title}
+                                    />
+                                )}
+                                <div className="flex bg-gray-100 dark:bg-gray-700 flex-col p-4 ">
+                                    <h2 className="text-2xl font-bold">
+                                        {movieData.title}
+                                    </h2>
+                                    <div className="flex items-center mb-4 text-xs">
+                                        <p className="mr-2">
+                                            {new Date(
+                                                movieData.release_date,
+                                            ).toLocaleDateString('en-GB')}
+                                        </p>
+                                        <span className="mr-2">&#8226;</span>
+                                        <p className="mr-2">
+                                            {movieData.genres
+                                                .map((genre) => genre.name)
+                                                .join(', ')}
+                                        </p>
+                                        <span className="mr-2">&#8226;</span>
+                                        <p>
+                                            {' '}
+                                            {formatRuntime(movieData.runtime)}
+                                        </p>
+                                    </div>
+                                    <p className="text-sm italic pb-2">
+                                        {movieData.tagline}
                                     </p>
-                                    <span className="mr-2">&#8226;</span>
-                                    <p className="mr-2">
-                                        {' '}
-                                        {movieData.genres
-                                            .map((genre) => genre.name)
-                                            .join(', ')}
+                                    <p className="text-base font-bold">
+                                        Overview
                                     </p>
-                                    <span className="mr-2">&#8226;</span>
-                                    <p> {formatRuntime(movieData.runtime)}</p>
-                                </div>
-                                <p className="text-sm italic pb-2">
-                                    {movieData.tagline}
-                                </p>
-                                <p className="text-base font-bold">Overview</p>
-                                <p className="text-sm pb-4">
-                                    {movieData.overview}
-                                </p>
-                                <div className="flex items-center text-sm mb-4">
-                                    <p className="mr-2">
-                                        Budget:{' '}
-                                        {formatCurrency(movieData.budget)}
+                                    <p className="text-sm pb-4">
+                                        {movieData.overview}
                                     </p>
-                                    <span className="mr-2">&#8226;</span>
-                                    <p>
-                                        Revenue:{' '}
-                                        {formatCurrency(movieData.revenue)}
-                                    </p>
+                                    <div className="flex items-center text-sm mb-4">
+                                        <p className="mr-2">
+                                            Budget:{' '}
+                                            {formatCurrency(movieData.budget)}
+                                        </p>
+                                        <span className="mr-2">&#8226;</span>
+                                        <p>
+                                            Revenue:{' '}
+                                            {formatCurrency(movieData.revenue)}
+                                        </p>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <MovieCredits
-                        credits={movieData.credits}
-                        maxCreditsToShow={10}
-                    />
-                </>
-            ) : (
-                <p>Loading...</p>
-            )}
+                        <MovieCredits
+                            credits={movieData.credits}
+                            maxCreditsToShow={12}
+                        />
+                    </>
+                ) : (
+                    <p>Loading...</p>
+                )}
+            </div>
         </div>
     );
 };
