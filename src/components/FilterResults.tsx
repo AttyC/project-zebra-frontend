@@ -14,7 +14,7 @@ const FilterResults: React.FC = () => {
             )}
             {!loading && movies && <MovieList movies={movies} />}
             {!loading && movies && movies.length === 0 && <li>No results</li>}
-            <div className="text-white font-semibold text-center bg-orange-700 p-2 my-2">
+            <div className="text-white font-semibold text-center p-2 my-2">
                 {error && error}
             </div>
         </section>
