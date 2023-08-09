@@ -15,7 +15,7 @@ const Filter = () => {
 
     return (
         <section className="filter">
-            <div className="filter__list">
+            <div className="filter__list md:max-w-4xl flex justify-center my-4">
                 {genresList &&
                     genresList.map((genre) => (
                         <FilterButton
