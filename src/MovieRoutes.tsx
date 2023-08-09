@@ -5,7 +5,7 @@ import Layout from './components/Layout';
 import Genres from './components/Genres';
 import PersonDetails from './components/Person';
 import MovieDetails from './components/MovieDetails';
-import UpcomingMovies from './components/UpcomingMovies';
+import Movies from './components/Movies';
 import Health from './components/Health';
 import NotFound from './components/NotFound';
 
@@ -17,7 +17,11 @@ const MovieRoutes = () => {
                 <Route path="genres" element={<Genres />} />
                 <Route path="person/:id" element={<PersonDetails />} />
                 <Route path="movie/:id" element={<MovieDetails />} />
-                <Route path="upcomingMovies" element={<UpcomingMovies />} />
+                <Route
+                    path="upcoming"
+                    element={<Movies criteria={'upcoming'} />}
+                />
+                <Route path="latest" element={<Movies criteria={'latest'} />} />
                 <Route path="movie/:id" element={<MovieDetails />} />
                 <Route path="health" element={<Health />} />
                 <Route path="*" element={<NotFound />} />

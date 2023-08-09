@@ -1,27 +1,23 @@
 import React, { useContext } from 'react';
-import Movie from './Movie';
+import MovieList from './MovieList';
 import { SearchContext } from '../hooks/SearchContext';
 
 const FilterResults: React.FC = () => {
     const { movies, error, loading } = useContext(SearchContext);
 
     return (
-        <>
-            <ul className="flex flex-wrap justify-center md:py-8">
-                {loading && <li>Loading...</li>}
-                {!loading &&
-                    movies &&
-                    movies.map((movie) => (
-                        <li key={movie.id}>
-                            <Movie movie={movie} />
-                        </li>
-                    ))}
-                {!loading && movies && movies.length === 0 && (
-                    <li>No results</li>
-                )}
-                {error && <li>{error}</li>}
-            </ul>
-        </>
+        <section>
+            {loading && (
+                <div className="text-white font-semibold text-center p-2 my-2">
+                    Loading...
+                </div>
+            )}
+            {!loading && movies && <MovieList movies={movies} />}
+            {!loading && movies && movies.length === 0 && <li>No results</li>}
+            <div className="text-white font-semibold text-center bg-orange-700 p-2 my-2">
+                {error && error}
+            </div>
+        </section>
     );
 };
 

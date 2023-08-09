@@ -35,7 +35,7 @@ body {
     font-family: 'Open Sans', sans-serif;
 }
 main {
-    height: 100vh;
+    height: 100%;
 }
 h1 {
     font-size: 3.2em;
