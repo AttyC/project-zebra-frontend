@@ -1,11 +1,17 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
+import IMAGES from '../images/Images';
+
 export const Header: React.FC = () => {
     return (
-        <header className="top-0 left-0 w-full rounded mb-10 bg-[#14443e] text-white border-b border-cyan-200 py-4 flex items-center justify-between">
+        <header className="top-0 left-0 w-full rounded mb-10 bg-green-950 text-white border-b border-cyan-200 py-4 flex items-center justify-between">
             <div className="logo pl-6 text-4xl font-black tracking-widest">
-                Project Zebra
+                <img
+                    src={IMAGES.logoLightTransparent}
+                    alt="Project Zebra logo"
+                    className="max-w-xs"
+                />
             </div>
             <nav className="pr-6">
                 <ul className="flex space-x-6">
