@@ -18,9 +18,11 @@
     -webkit-text-size-adjust: 100%;
 
     margin: 0 auto;
-    max-width: 90%;
 }
 
+#root {
+    /* max-width: 90%; */
+}
 a {
     font-weight: 500;
     color: #646cff;
@@ -58,8 +60,9 @@ button:hover {
 }
 
 button:focus,
+button:hover,
 button:focus-visible {
-    outline: 4px auto -webkit-focus-ring-color;
+    outline: 4px auto #e94f37;
 }
 
 @media (prefers-color-scheme: light) {
@@ -88,7 +91,6 @@ button:focus-visible {
 }
 
 button:hover {
-    background-color: darkslategray;
     color: white;
 }
 
@@ -106,15 +108,22 @@ button:hover {
 
 .filter__list--item:hover,
 .filter__list--item:active {
-    background-color: rgb(102, 60, 194);
+    background-color: #374151;
 }
 
 .filter__button--active {
-    background-color: rgb(55, 39, 160);
+    background-color: #374151;
 }
 
 .searchInput {
     padding: 10px;
     margin-bottom: 10px;
     border-radius: 4px;
+    width: 36rem;
+    max-width: 100%;
+}
+
+label {
+    color: white;
+    max-width: 28rem;
 }

@@ -21,7 +21,10 @@ const FilterButton = ({ name, id }: Genre) => {
     return (
         <button
             value={id}
-            className={'filter__list--item ' + activeStyling}
+            className={
+                'filter__list--item hover:bg-orange-600 focus:outline-green active:outline-black' +
+                activeStyling
+            }
             onClick={handleClick}
         >
             {name}
