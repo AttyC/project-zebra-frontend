@@ -5,7 +5,7 @@ import IMAGES from '../images/Images';
 
 export const Header: React.FC = () => {
     return (
-        <header className="top-0 left-0 w-full rounded mb-10 bg-green-950 text-white border-b border-cyan-200 py-4 flex items-center justify-between">
+        <header className="top-0 left-0 w-full rounded-t  bg-gray-800 text-white py-4 flex items-center justify-between border-b-2 border-b-orange-600">
             <div className="logo pl-6 text-4xl font-black tracking-widest">
                 <img
                     src={IMAGES.logoLightTransparent}

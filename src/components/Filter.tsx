@@ -14,7 +14,7 @@ const Filter = () => {
     };
 
     return (
-        <section className="filter">
+        <section className="filter items-center">
             <div className="filter__list md:max-w-4xl flex justify-center my-4">
                 {genresList &&
                     genresList.map((genre) => (
@@ -26,7 +26,12 @@ const Filter = () => {
                     ))}
             </div>
 
-            <button onClick={() => clearFilters()}>Clear All</button>
+            <button
+                onClick={() => clearFilters()}
+                className="md:w-28 hover:bg-gray-700"
+            >
+                Clear All
+            </button>
         </section>
     );
 };

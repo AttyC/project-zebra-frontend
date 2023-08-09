@@ -6,7 +6,7 @@ const FilterResults: React.FC = () => {
     const { movies, error, loading } = useContext(SearchContext);
 
     return (
-        <ul className="flex flex-wrap justify-center">
+        <ul className="flex flex-wrap justify-center md:py-8">
             {loading && <li>Loading...</li>}
             {!loading &&
                 movies &&
