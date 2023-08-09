@@ -9,8 +9,11 @@ const SearchBar = () => {
     };
     return (
         <>
-            <label htmlFor="searchInput" className="max-w-sm">
-                Search for a movie
+            <label
+                htmlFor="searchInput"
+                className="max-w-sm font-semibold my-2"
+            >
+                Search for a movie...
             </label>
             <input
                 type="text"

@@ -61,7 +61,8 @@ button:hover {
 
 button:focus,
 button:hover,
-button:focus-visible {
+button:focus-visible,
+input:focus {
     outline: 4px auto #e94f37;
 }
 
