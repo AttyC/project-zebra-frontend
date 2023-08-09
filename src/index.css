@@ -77,6 +77,11 @@ button:focus-visible {
     }
 }
 
+.filter {
+    display: flex;
+    flex-direction: column;
+}
+
 .filter__list {
     display: flex;
     flex-wrap: wrap;
