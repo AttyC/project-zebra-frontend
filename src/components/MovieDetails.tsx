@@ -80,9 +80,7 @@ const MovieDetails: React.FC = () => {
                                     <p className="text-sm italic pb-2">
                                         {movieData.tagline}
                                     </p>
-                                    <p className="text-base font-bold">
-                                        Overview
-                                    </p>
+                                    <h2>Overview</h2>
                                     <p className="text-sm pb-4">
                                         {movieData.overview}
                                     </p>

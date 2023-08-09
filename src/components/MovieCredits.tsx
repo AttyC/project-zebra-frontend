@@ -12,7 +12,6 @@ const MovieCredits: React.FC<MovieCreditsProps> = ({
     maxCreditsToShow,
 }) => {
     const creditsToShow = credits.slice(0, maxCreditsToShow);
-    const IMAGE_BASE_URL = 'https://image.tmdb.org/t/p/w200'; //BW - Refactor: This should be provided from the backend
 
     return (
         <div>
@@ -31,7 +30,7 @@ const MovieCredits: React.FC<MovieCreditsProps> = ({
                                 {castMember.profile_path && (
                                     <div className="w-32 h-36 mb-2">
                                         <img
-                                            src={`${IMAGE_BASE_URL}${castMember.profile_path}`}
+                                            src={castMember.profile_path}
                                             alt={castMember.name}
                                             className="w-full h-full object-cover"
                                         />
