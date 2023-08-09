@@ -9,7 +9,7 @@ const Movie: React.FC<IMovieProps> = ({ movie }) => {
     const { title, overview, poster_path } = movie;
     return (
         <section
-            className="lg:max-w-xs lg:mx-6 p-6 bg-gray-100 rounded border-2 hover:scale-105 transition-transform duration-500'
+            className="lg:max-w-xs md:mx-2 lg:mmx-4 p-6 bg-gray-100 rounded border-2 hover:scale-105 transition-transform duration-500'
          mb-6"
         >
             <Link to={`/movie/${movie.id}`} className="text-gray-700">
@@ -26,9 +26,7 @@ const Movie: React.FC<IMovieProps> = ({ movie }) => {
                         />
                     </Link>
                 )}
-                <p className="md:max-w-overview font-semiboldtext-sm md:text-base py-2">
-                    {overview}
-                </p>
+                <p className="md:max-w-overview font-600 py-2">{overview}</p>
                 <p className="text-sm">
                     {' '}
                     <Link to={`/movie/${movie.id}`}>read more</Link>
