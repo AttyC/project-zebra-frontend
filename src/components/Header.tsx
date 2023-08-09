@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import Nav from './Nav';
 
 import IMAGES from '../images/Images';
 
@@ -15,28 +16,7 @@ export const Header: React.FC = () => {
                     />
                 </Link>
             </div>
-            <nav className="pr-6">
-                <ul className="flex space-x-6 text-xl">
-                    <li>
-                        <Link to="/" className="nav-link text-white">
-                            Home
-                        </Link>
-                    </li>
-                    <li>
-                        <Link
-                            to="/upcomingMovies"
-                            className="nav-link text-white"
-                        >
-                            Upcoming
-                        </Link>
-                    </li>
-                    <li>
-                        <Link to="/genres" className="nav-link text-white">
-                            Genres
-                        </Link>
-                    </li>
-                </ul>
-            </nav>
+            <Nav />
         </header>
     );
 };
