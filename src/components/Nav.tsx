@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 const Nav = () => {
     return (
         <nav className="pr-6">
-            <ul className="flex space-x-6 text-xl">
+            <ul className="sm:flex sm:space-x-6 text-xl">
                 <li>
                     <Link to="/" className="nav-link text-white">
                         Home
@@ -23,6 +23,12 @@ const Nav = () => {
                 <li>
                     <Link to="/genres" className="nav-link text-white">
                         Genres
+                    </Link>
+                </li>
+
+                <li>
+                    <Link to="/health" className="nav-link text-white">
+                        Health
                     </Link>
                 </li>
             </ul>
