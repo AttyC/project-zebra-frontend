@@ -6,18 +6,22 @@ const FilterResults: React.FC = () => {
     const { movies, error, loading } = useContext(SearchContext);
 
     return (
-        <ul className="flex flex-wrap justify-center md:py-8">
-            {loading && <li>Loading...</li>}
-            {!loading &&
-                movies &&
-                movies.map((movie) => (
-                    <li key={movie.id}>
-                        <Movie movie={movie} />
-                    </li>
-                ))}
-            {!loading && movies && movies.length === 0 && <li>No results</li>}
-            {error && <li>{error}</li>}
-        </ul>
+        <>
+            <ul className="flex flex-wrap justify-center md:py-8">
+                {loading && <li>Loading...</li>}
+                {!loading &&
+                    movies &&
+                    movies.map((movie) => (
+                        <li key={movie.id}>
+                            <Movie movie={movie} />
+                        </li>
+                    ))}
+                {!loading && movies && movies.length === 0 && (
+                    <li>No results</li>
+                )}
+                {error && <li>{error}</li>}
+            </ul>
+        </>
     );
 };
 
