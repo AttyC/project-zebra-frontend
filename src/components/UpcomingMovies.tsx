@@ -30,8 +30,8 @@ const UpcomingMovies = () => {
     }, []);
 
     return (
-        <>
-            <h1 className="text-white text-2xl">Upcoming Movies</h1>
+        <section className="py-8">
+            <h1 className="text-white font-medium">Upcoming Movies</h1>
             <ul className="flex flex-wrap justify-center md:py-8">
                 {upcomingMovies &&
                     upcomingMovies.map((movie) => (
@@ -40,7 +40,7 @@ const UpcomingMovies = () => {
                         </li>
                     ))}
             </ul>
-        </>
+        </section>
     );
 };
 
